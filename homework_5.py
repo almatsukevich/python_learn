@@ -9,7 +9,7 @@ def decor(func):
         return value
     return name_admin
 
-#@decor
+@decor
 def print_sum(x1):
     print(f'На Вашем счете - {x1} USD')
 
