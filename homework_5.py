@@ -2,10 +2,10 @@ name = input('Введите логин: ')
 sum_i = 12535.5
 
 def decor(func):
-    def name_admin(n, s):
-        if n != 'admin':
+    def name_admin(*args, **kwargs):
+        if args[0] != 'admin':
             return print('Доступ запрещен')
-        value = func(s)
+        value = func(args[1])
         return value
     return name_admin
 
