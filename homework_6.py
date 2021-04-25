@@ -12,16 +12,18 @@ def show_menu():
     return int(input('Ваш выбор: '))
 
 def list_users():
-#    while True:
-    print(list_u.keys())
-    
+    i = 0
+    list_nick = list(list_u.keys())
+    print('Список пользователей:')
+    for i in range(len(list_nick)):
+        print("{}. {}".format(i + 1, list_nick[i]))
 
 def info_user():
     nickname = input('Введите никнейм пользователя: ')
     infolist = list_u.get(nickname, False)
     if infolist != False:
-        print('Для пользователя ', infolist[0], ' сохранены следующие данные:\n'
-        'рост - ', infolist[1], ' см, вес - ', infolist[2], ' кг')
+        print('Для пользователя {} сохранены следующие данные:\nрост - {} см, '\
+            'вес - {} кг'.format(infolist[0], infolist[1], infolist[2]))
         bmi = infolist[2] / (infolist[1] / 100)  ** 2
         st = (50 - 10) / 20
         x = int((bmi - 10) / st)
@@ -33,33 +35,30 @@ def info_user():
         return
 
 def create_user():
-    key = input('Введите никнейм пользователя, данные которого хотите изменить: ')
-    key_bool = key in list_u
-    if key_bool == True:
-        infolist = [input('Введите имя: '), input('Введите рост (см): '), \
-            input('Введите массу тела (кг): ')]
+    key = input('Введите никнейм пользователя, данные которого хотите изменить'\
+        ': ')
+    if key in list_u.keys():
+        infolist = [input('Введите имя: '), int(input('Введите рост (см): ')), \
+            int(input('Введите массу тела (кг): '))]
         list_u.update({key: infolist})
-#        print(list_u)
     else:
         print('Никнейм не определен')
         return
 
 def delete_user():
-    key = input('Введите никнейм пользователя, данные которого хотите удалить: ')
-    key_bool = key in list_u
-    if key_bool == True:
+    key = input('Введите никнейм пользователя, данные которого хотите удалить:'\
+        ' ')
+    if key in list_u:
         list_u.pop(key)
-#        print(list_u)
     else:
         print('Никнейм не определен')
         return
 
 def add_user():
     key = input('Для создания пользователя введите никнейм: ')
-    infolist = [input('Введите имя: '), input('Введите рост (см): '), \
-    input('Введите массу тела (кг): ')]
+    infolist = [input('Введите имя: '), int(input('Введите рост (см): ')), \
+    int(input('Введите массу тела (кг): '))]
     list_u.update({key: infolist})
-#    print(list_u)
 
 ACTIONS = {
     1: list_users,
@@ -67,7 +66,6 @@ ACTIONS = {
     3: create_user,
     4: delete_user,
     5: add_user,
-#    6: exit_prog,
 }
 
 list_u = {
@@ -84,5 +82,7 @@ def main():
     while answer != 6:
         action = select_action(answer)
         answer = action()
+    else:
+        print('Вы выполнили выход из программы')
 
 main()
