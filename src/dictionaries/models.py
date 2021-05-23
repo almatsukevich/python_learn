@@ -14,7 +14,7 @@ class Author(models.Model):
         null=True)
 
     def __str__(self) ->str:
-        return "{self.name}"
+        return self.name
 
     class Meta:
         verbose_name = "Автор"
@@ -33,7 +33,7 @@ class BookSeries(models.Model):
         null=True)
 
     def __str__(self) ->str:
-        return "{self.name}"
+        return self.name
 
     class Meta:
         verbose_name = "Книжная серия"
@@ -52,7 +52,7 @@ class BookGenre(models.Model):
         null=True)
 
     def __str__(self) ->str:
-        return "{self.name}"
+        return self.name
 
     class Meta:
         verbose_name = "Жанр"
@@ -71,7 +71,7 @@ class Publusher(models.Model):
         null=True)
 
     def __str__(self) ->str:
-        return "{self.name}"
+        return self.name
 
     class Meta:
         verbose_name = "Издательство"
