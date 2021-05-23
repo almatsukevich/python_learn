@@ -6,7 +6,7 @@ from django.db import models
 class Author(models.Model):
     name = models.CharField(
         verbose_name = "Фамилия.И.О автора",
-        max_length=15)
+        max_length=30)
 
     desription = models.TextField(
         verbose_name = "Об авторе",
@@ -44,7 +44,7 @@ class BookSeries(models.Model):
 class BookGenre(models.Model):
     name = models.CharField(
         verbose_name = "Название жанра",
-        max_length=20)
+        max_length=30)
 
     desription = models.TextField(
         verbose_name = "Описание жанра",
@@ -63,7 +63,7 @@ class BookGenre(models.Model):
 class Publusher(models.Model):
     name = models.CharField(
         verbose_name = "Название издательства",
-        max_length=20)
+        max_length=40)
 
     desription = models.TextField(
         verbose_name = "Описание издательства",
