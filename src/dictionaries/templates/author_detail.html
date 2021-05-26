@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author</title>
+</head>
+<body>
+    <h1>Автор</h1>
+    <b>ID:</b> {{ author.pk }} <br>
+    <b>Фамилия И.О.:</b> {{ author.name }} <br>
+    <b>Информация об авторе:</b> {{ author.desription }} <br>
+    <br>
+    <a href="{% url 'authors-list' %}">К списку авторов</a>
+</body>
+</html>

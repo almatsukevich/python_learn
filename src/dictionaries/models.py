@@ -2,7 +2,7 @@ from django.db import models
 
 
 
-# Create dictionary "Authors"
+# Create manual "Authors"
 class Author(models.Model):
     name = models.CharField(
         verbose_name = "Фамилия.И.О автора",
@@ -21,7 +21,7 @@ class Author(models.Model):
         verbose_name_plural = "Авторы"
 
 
-# Create dictionary "Book Series"
+# Create manual "Book Series"
 class BookSeries(models.Model):
     name = models.CharField(
         verbose_name = "Название серии",
@@ -40,7 +40,7 @@ class BookSeries(models.Model):
         verbose_name_plural = "Книжные серии"
 
 
-# Create dictionary "Book genre"
+# Create manual "Book genre"
 class BookGenre(models.Model):
     name = models.CharField(
         verbose_name = "Название жанра",
@@ -59,7 +59,7 @@ class BookGenre(models.Model):
         verbose_name_plural = "Жанры"
 
         
-# Create dictionary "Publisher"
+# Create manual "Publisher"
 class Publusher(models.Model):
     name = models.CharField(
         verbose_name = "Название издательства",
