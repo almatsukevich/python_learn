@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Жанр</h1>
-    <b>ID:</b> {{ bookgenre.pk }} <br>
-    <b>Название:</b> {{ bookgenre.name }} <br>
-    <b>Информация о жанре:</b> {{ bookgenre.desription }} <br>
+    <b>ID:</b> {{ object.pk }} <br>
+    <b>Название:</b> {{ object.name }} <br>
+    <b>Информация о жанре:</b> {{ object.desription }} <br>
     <br>
     <a href="{% url 'bookgenres-list' %}">К списку жанров</a>
 </body>

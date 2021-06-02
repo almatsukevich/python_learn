@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Автор</h1>
-    <b>ID:</b> {{ author.pk }} <br>
-    <b>Фамилия И.О.:</b> {{ author.name }} <br>
-    <b>Информация об авторе:</b> {{ author.desription }} <br>
+    <b>ID:</b> {{ object.pk }} <br>
+    <b>Фамилия И.О.:</b> {{ object.name }} <br>
+    <b>Информация об авторе:</b> {{ object.desription }} <br>
     <br>
-    <a href="{% url 'authors-list' %}">К списку авторов</a>
+    <a href="{% url 'manuals:authors-list' %}">К списку авторов</a>
 </body>
 </html>

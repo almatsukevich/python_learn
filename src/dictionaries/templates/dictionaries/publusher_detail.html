@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Издательство</h1>
-    <b>ID:</b> {{ publisher.pk }} <br>
-    <b>Наименование:</b> {{ publisher.name }} <br>
-    <b>Информация об издательстве:</b> {{ publisher.desription }} <br>
+    <b>ID:</b> {{ object.pk }} <br>
+    <b>Наименование:</b> {{ object.name }} <br>
+    <b>Информация об издательстве:</b> {{ object.desription }} <br>
     <br>
-    <a href="{% url 'publisher-list' %}">К списку издательств</a>
+    <a href="{% url 'manuals:publishers-list' %}">К списку издательств</a>
 </body>
 </html>

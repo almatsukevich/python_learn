@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Книжная серия</h1>
-    <b>ID:</b> {{ bookserie.pk }} <br>
-    <b>Название:</b> {{ bookserie.name }} <br>
-    <b>Информация о серии:</b> {{ bookserie.desription }} <br>
+    <b>ID:</b> {{ object.pk }} <br>
+    <b>Название:</b> {{ object.name }} <br>
+    <b>Информация о серии:</b> {{ object.desription }} <br>
     <br>
-    <a href="{% url 'bookseries-list' %}">К списку книжных серий</a>
+    <a href="{% url 'manuals:bookseries-list' %}">К списку книжных серий</a>
 </body>
 </html>
