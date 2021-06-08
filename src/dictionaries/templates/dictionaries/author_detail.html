@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Author</title>
-</head>
-<body>
-    <h1>Автор</h1>
-    <b>ID:</b> {{ object.pk }} <br>
-    <b>Фамилия И.О.:</b> {{ object.name }} <br>
-    <b>Информация об авторе:</b> {{ object.desription }} <br>
+{% extends 'base_in.html' %}
+{% block title %}Author{% endblock title %}
+
+{% block body %}
     <br>
-    <a href="{% url 'manuals:authors-list' %}">К списку авторов</a>
-</body>
-</html>
+    <h2>Карточка автора</h2>
+    <br>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="..." alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title">{{ object.name }}</h4>
+              <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
+              <p class="card-text">{{ object.desription }}</p>
+              <p class="card-text">
+                <a class="btn btn-outline-warning btn-sm" href="{% url 'manuals:author-update' object.pk %}" role="button">Изменить</a>
+                <a class="btn btn-outline-danger btn-sm" href="{% url 'manuals:author-delete' object.pk %}" role="button">Удалить</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <br>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
+{% endblock body %}

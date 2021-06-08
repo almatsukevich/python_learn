@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookGenre</title>
-</head>
-<body>
+{% extends 'base_in.html' %}
+{% block title %}BookGenre{% endblock title %}
+
+{% block body %}
     <h1>Жанр</h1>
     <b>ID:</b> {{ object.pk }} <br>
     <b>Название:</b> {{ object.name }} <br>
     <b>Информация о жанре:</b> {{ object.desription }} <br>
     <br>
     <a href="{% url 'manuals:bookgenres-list' %}">К списку жанров</a>
-</body>
-</html>
+{% endblock body %}

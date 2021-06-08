@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Author</title>
-</head>
-<body>
-    <h1>Удалить автора {{ object.name }}?</h1>
+{% extends 'base_in.html' %}
+{% block title %}Delete Author{% endblock title %}
+
+{% block body %}
+<br>
+<h2>Удаление автора</h2>
+<br>
+<div class="alert alert-primary d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+    <div>
+    <h4>Вы действительно хотите удалить автора {{ object.name }}?</h4>
+      Нажимая кнопку "Да" вы подтверждаете безвозвратное удаление записи об авторе
+    <br>
+    <br>
     <form action="" method="post">
         {% csrf_token %}
-        <button type="submit">Да</button>
+        <button type="submit" class="btn btn-primary btn-sm">Да</button>
+        <a class="btn btn-info btn-sm" href="{% url 'manuals:author' object.pk %}" role="button">Посмотреть карточку автора</a>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
     </form>
+    </div>
+  </div>
+   
 <script>
     
 </script>
-</body>
-</html>
+{% endblock body %}

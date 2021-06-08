@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create BookGenre</title>
-</head>
-<body>
+{% extends 'base_in.html' %}
+{% block title %}Create BookGenre{% endblock title %}
+
+{% block body %}
     <h1>Добавить книжный жанр</h1>
     <form action="" method="post">
         {% csrf_token %}
@@ -16,5 +11,4 @@
 
     <br>
     <a href="{% url 'manuals:bookgenres-list' %}">К списку книжных жанров</a>
-</body>
-</html>
+{% endblock body %}

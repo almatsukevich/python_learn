@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
+{% extends 'base_in.html' %}
+{% block title %}Home Page{% endblock title %}
+
+{% block body %}
+<br>
     <h1>Главная</h1>
+    <br>
     <u1>
         <li><a href="{% url 'manuals:manuals-home' %}">Справочники</a> </li>
     </u1>
-
-</body>
-</html>
+{% endblock body %}
