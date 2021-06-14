@@ -1,14 +1,17 @@
 {% extends 'base_in.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Create Publisher{% endblock title %}
 
 {% block body %}
-    <h1>Добавить издательство</h1>
-    <form action="" method="post">
+<br>
+    <h2>Добавить/изменить издательство</h2>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit">Принять</button>
+        {{ form|crispy }}
+        <br>
+        <button type="submit" class="btn btn-success btn-sm">Принять</button>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:publishers-list' %}" role="button">К списку издательств</a>
     </form>
 
-    <br>
-    <a href="{% url 'manuals:publishers-list' %}">К списку издательств</a>
 {% endblock body %}

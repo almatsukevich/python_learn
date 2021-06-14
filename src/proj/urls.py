@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.urls.conf import include
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.auth import views as auth_views
+
 
 from cities import views as cities_views
 from dictionaries import views as dict_views
@@ -23,19 +27,11 @@ from dictionaries import views as dict_views
 urlpatterns = [
     path('', dict_views.Home.as_view(), name = 'home'),
     path('manuals/', include('dictionaries.urls', namespace = 'manuals')),
-    path('admin/', admin.site.urls),
-#    path('authors/', dict_views.author_list, name = "authors-list"),
-    # path('authors/', dict_views.AuthorListView.as_view(), name = "authors-list"),
-    # path('authors/<int:author_id>/', dict_views.author_detail, \
-    #     name = "author"),
-    # path('authors/<int:pk>/', dict_views.AuthorDetailView.as_view(), \
-    #     name = "author"),
-    # path('author-create/', dict_views.AuthorCreateView.as_view(), \
-    #     name = "author-create"),
-    # path('author-update/<int:pk>/', dict_views.AuthorUpdateView.as_view(), \
-    #     name = "author-update"),
-    # path('author-delete/<int:pk>/', dict_views.AuthorDeleteView.as_view(), \
-    #     name = "author-delete"),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(template_name='accounts/logget_out.html'), name='logout'),
+    path('accounts/password-change/', auth_views.PasswordChangeView.as_view(template_name='accounts/password_change.html'), name='password-change'),
+    path('s-admin/', admin.site.urls),
+] 
 
- #   path('<str:code>/', cities_views.cities)
-]
+if settings.LOCAL_MEDIA: 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

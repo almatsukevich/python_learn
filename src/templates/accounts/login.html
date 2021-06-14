@@ -1,0 +1,33 @@
+{% extends "base_auth.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<main class="form-signin">
+<h1>BookShop</h1>
+<br>
+{% if form.errors %}
+<p>Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>У вашей учетной записи нет доступа к этой странице. Чтобы продолжить, 
+        войдите в систему с учетной записью, у которой есть доступ.</p>
+    {% else %}
+    <p>Пожалуйста, войдите, чтобы увидеть эту страницу.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+{{ form|crispy }}
+
+<input type="submit" value="Войти" class="btn btn-primary">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="#">Забыли пароль?</a></p>
+</main>
+{% endblock %}

@@ -2,17 +2,43 @@
 {% block title %}BookSeries{% endblock title %}
 
 {% block body %}
-    <h1>Выберите книжную серию</h1>
-    <u1>
-        {% for object in object_list %} 
-            <li><a href="{% url 'manuals:bookseries' object.pk %}">{{ object }}</a>
-             || <a href="{% url 'manuals:bookseries-update' object.pk %}">Update</a>
-             || <a href="{% url 'manuals:bookseries-delete' object.pk %}">Delete</a>
-         </li>
-        {% endfor %}
-     </u1>
-     <br>
-     <a href="{% url 'manuals:bookseries-create' %}">Добавить книжную серию</a>
-     <br>
-     <a href="{% url 'manuals:manuals-home' %}">К списку справочников</a>
+    <br>
+    <h1>Книжные серии</h1>
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название серии</th>
+            {% if perms.dictionaries.change_bookseries %}
+            <th scope="col">Изменение</th>
+            {% endif %}
+            {% if perms.dictionaries.delete_bookseries %}
+            <th scope="col">Удаление</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr>
+                <th scope="row">{{ object.pk }}</th>
+                <td><a href="{% url 'manuals:bookseries' object.pk %}">{{ object }}</a></td>
+                {% if perms.dictionaries.change_bookseries %}
+                <td><a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookseries-update' object.pk %}" role="button">Изменить</a></td>
+                {% endif %}
+                {% if perms.dictionaries.delete_bookseries %}
+                <td><a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookgenre-delete' object.pk %}" role="button">Удалить</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
+    {% if perms.dictionaries.add_bookseries %}
+    <a class="btn btn-success btn-sm" href="{% url 'manuals:bookseries-create' %}" role="button">Добавить книжную серию</a>
+    {% endif %}
+
 {% endblock body %}
+

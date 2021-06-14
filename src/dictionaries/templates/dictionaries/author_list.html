@@ -10,8 +10,12 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Фамилия И.О.</th>
+            {% if perms.dictionaries.change_author %}
             <th scope="col">Изменение</th>
+            {% endif %}
+            {% if perms.dictionaries.delete_author %}
             <th scope="col">Удаление</th>
+            {% endif %}
           </tr>
         </thead>
         <tbody>
@@ -19,8 +23,12 @@
             <tr>
                 <th scope="row">{{ author.pk }}</th>
                 <td><a href="{% url 'manuals:author' author.pk %}">{{ author }}</a></td>
-                <td><a class="btn btn-outline-warning btn-sm" href="{% url 'manuals:author-update' author.pk %}" role="button">Изменить</a></td>
-                <td><a class="btn btn-outline-danger btn-sm" href="{% url 'manuals:author-delete' author.pk %}" role="button">Удалить</a></td>
+                {% if perms.dictionaries.change_author %}
+                <td><a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:author-update' author.pk %}" role="button">Изменить</a></td>
+                {% endif %}
+                {% if perms.dictionaries.delete_author %}
+                <td><a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:author-delete' author.pk %}" role="button">Удалить</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
@@ -28,7 +36,8 @@
 
     <br>
     <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
+    {% if perms.dictionaries.add_author %}
     <a class="btn btn-success btn-sm" href="{% url 'manuals:author-create' %}" role="button">Добавить автора</a>
-
+    {% endif %}
 
 {% endblock body %}

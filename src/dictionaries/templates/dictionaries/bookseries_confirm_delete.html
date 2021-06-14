@@ -2,11 +2,25 @@
 {% block title %}Delete BookSerie{% endblock title %}
 
 {% block body %}
-    <h1>Удалить книжную серию "{{ object.name }}"?</h1>
+<br>
+<h2>Удаление книжной серии</h2>
+<br>
+<div class="alert alert-primary d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+    <div>
+    <h4>Вы действительно хотите удалить книжную серию "{{ object.name }}"?</h4>
+      Нажимая кнопку "Да" вы подтверждаете безвозвратное удаление записи о книжной серии
+    <br>
+    <br>
     <form action="" method="post">
         {% csrf_token %}
-        <button type="submit">Да</button>
+        <button type="submit" class="btn btn-primary btn-sm">Да</button>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookseries' object.pk %}" role="button">Посмотреть карточку книжной серии</a>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookseries-list' %}" role="button">К списку книжных серий</a>
     </form>
+    </div>
+  </div>
+   
 <script>
     
 </script>

@@ -2,29 +2,27 @@
 {% block title %}Author{% endblock title %}
 
 {% block body %}
-    <br>
-    <h2>Карточка автора</h2>
-    <br>
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="..." alt="...">
+      <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ object.picture.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h4 class="card-title">{{ object.name }}</h4>
-              <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
-              <p class="card-text">{{ object.desription }}</p>
-              <p class="card-text">
-                <a class="btn btn-outline-warning btn-sm" href="{% url 'manuals:author-update' object.pk %}" role="button">Изменить</a>
-                <a class="btn btn-outline-danger btn-sm" href="{% url 'manuals:author-delete' object.pk %}" role="button">Удалить</a>
-              </p>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">{{ object.name }}</h1>
+            <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
+            <p class="lead">{{ object.desription }}</p>
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a class="btn btn-primary btn-sm" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
+              {% if perms.dictionaries.change_author %}
+              <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:author-update' object.pk %}" role="button">Изменить</a>
+              {% endif %}
+              {% if perms.dictionaries.delete_author %}
+              <a class="btn btn-outline-danger btn-sm" href="{% url 'manuals:author-delete' object.pk %}" role="button">Удалить</a>
+              {% endif %}
             </div>
           </div>
         </div>
       </div>
-
-
-    <br>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
+    
 {% endblock body %}

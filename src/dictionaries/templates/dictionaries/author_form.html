@@ -6,7 +6,7 @@
 <br>
     <h2>Добавить/изменить автора</h2>
     <br>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
         <br>

@@ -12,6 +12,11 @@ class Author(models.Model):
         verbose_name = "Об авторе",
         blank=True,
         null=True)
+    
+    picture = models.ImageField(
+        "Изображение",
+        upload_to='authors/'
+    )
 
     def __str__(self) ->str:
         return self.name
@@ -69,6 +74,11 @@ class Publusher(models.Model):
         verbose_name = "Описание издательства",
         blank=True,
         null=True)
+    
+    picture = models.ImageField(
+        "Изображение",
+        upload_to='publishers/'
+    )
 
     def __str__(self) ->str:
         return self.name

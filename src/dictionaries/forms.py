@@ -6,6 +6,7 @@ class CreateAuthorForm(forms.ModelForm):
     class Meta:
         model = models.Author
         fields = (
+            'picture',
             'name',
             'desription'
         )
@@ -30,6 +31,7 @@ class CreatePublusherForm(forms.ModelForm):
     class Meta:
         model = models.Publusher
         fields = (
+            'picture',
             'name',
             'desription'
         )

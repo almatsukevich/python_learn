@@ -1,11 +1,24 @@
 {% extends 'base_in.html' %}
-{% block title %}BookSerie{% endblock title %}
+{% block title %}BookSeries{% endblock title %}
 
 {% block body %}
-    <h1>Книжная серия</h1>
-    <b>ID:</b> {{ object.pk }} <br>
-    <b>Название:</b> {{ object.name }} <br>
-    <b>Информация о серии:</b> {{ object.desription }} <br>
-    <br>
-    <a href="{% url 'manuals:bookseries-list' %}">К списку книжных серий</a>
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold lh-1 mb-3">{{ object.name }}</h1>
+          <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
+          <p class="lead">{{ object.desription }}</p>
+          <br>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="btn btn-primary btn-sm" href="{% url 'manuals:bookseries-list' %}" role="button">К списку книжных серий</a>
+            {% if perms.dictionaries.change_bookseries %}
+            <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookseries-update' object.pk %}" role="button">Изменить</a>
+            {% endif %}
+            {% if perms.dictionaries.delete_bookseries %}
+            <a class="btn btn-outline-danger btn-sm" href="{% url 'manuals:bookseries-delete' object.pk %}" role="button">Удалить</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+  
 {% endblock body %}

@@ -2,11 +2,25 @@
 {% block title %}Delete Publisher{% endblock title %}
 
 {% block body %}
-    <h1>Удалить издательство {{ object.name }}?</h1>
+<br>
+<h2>Удаление издательства</h2>
+<br>
+<div class="alert alert-primary d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+    <div>
+    <h4>Вы действительно хотите удалить издательство "{{ object.name }}"?</h4>
+      Нажимая кнопку "Да" вы подтверждаете безвозвратное удаление записи об издательстве
+    <br>
+    <br>
     <form action="" method="post">
         {% csrf_token %}
-        <button type="submit">Да</button>
+        <button type="submit" class="btn btn-primary btn-sm">Да</button>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:publisher' object.pk %}" role="button">Посмотреть карточку издательства</a>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:publishers-list' %}" role="button">К списку издательств</a>
     </form>
+    </div>
+  </div>
+   
 <script>
     
 </script>
