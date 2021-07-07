@@ -1,0 +1,63 @@
+{% extends 'base_out.html' %}
+{% block title %}Order{% endblock title %}
+
+{% block body %}
+      <div class="container col-xxl-8 px-4 py-5">
+        
+          <div class="col-lg-15">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Заказ №{{ object.pk }}</h1>
+            <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
+            <p class="lead">
+             
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Книга</th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">Стоимость (BYN)</th>
+            
+                  </tr>
+                </thead>
+                <tbody>
+                {% for good_in_order in object.cart.goods.all %}    
+                  <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{% for author in good_in_order.book.author.all %}
+                            {{ author.name }}
+                        {% endfor %}
+                        <b>"{{ good_in_order.book.name }}"</b>
+                    </td>
+                    <td>{{ good_in_order.quantity }}</td>
+                    <td>{{ good_in_order.total_price }}</td>
+            
+                  </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">Общая стоимость заказа:</td>
+                    <td>{{ object.cart.total_price }}</td>
+                    <td>-</td>
+                </tr>
+            
+                </table>
+              <b>Год издания:</b> {{ object.pk }}<br>
+              <p><small>
+              <b>Дата создания:</b> {{ object.pk }}<br>
+              <b>Дата изменения:</b> {{ object.pk }}</small></p><br>
+              <br>
+              {% if perms.orders.change_order %}
+              <a class="btn btn-outline-primary" href="{% url 'orders:order-update' object.pk %}" role="button">Изменить</a>
+              {% endif %}
+
+            </p>
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+   
+              <a class="btn btn-outline-primary" href="{% url 'orders:orders-list' %}" role="button">К списку заказов</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    
+{% endblock body %}

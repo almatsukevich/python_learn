@@ -1,0 +1,61 @@
+{% extends 'base_out.html' %}
+{% block title %}Book{% endblock title %}
+
+{% block body %}
+      <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ object.picture.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">{{ object.name }}</h1>
+            
+            <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
+            
+            <p class="lead">
+              <b>Автор:</b> {% for author in book.author.all %}
+              <a href="{% url 'manuals:author' author.pk %}">{{ author.name }}</a>
+              {% endfor %}<br>
+              <b>Книжная серия:</b> 
+              <a href="{% url 'manuals:bookseries' object.serie.pk %}">{{ object.serie }}</a><br>
+              <b>Жанр:</b> {% for genre in book.genre.all %}
+              <a href="{% url 'manuals:bookgenre' genre.pk %}">{{ genre.name }}</a>
+              {% endfor %}<br>
+              <b>Год издания:</b> {{ object.year }}<br>
+              <b>Страниц:</b> {{ object.pages }}<br>
+              <b>Переплет:</b> {{ object.binding }}<br>
+              <b>Формат:</b> {{ object.book_format }}<br>
+              <b>Вес:</b> {{ object.weight }} гр.<br>
+              <b>ISBN:</b> {{ object.isbn }}<br>
+              <b>Издательство:</b> 
+              <a href="{% url 'manuals:publisher' object.publusher.pk %}">{{ object.publusher }}</a><br>
+              <b>Количество в наличии:</b> {{ object.quantity }}<br>
+              <b>Доступен для заказа:</b> 
+              {% if object.active == True %} Да  
+              {% else %} Нет
+              {% endif %}<br>
+              <b>Рейтинг:</b> {{ object.rating }}<br>
+             
+              <b>Цена:</b> <h3>{{ object.unit_price }} BYN</h3><br>
+              <p class="card-text"><small class="text-muted">
+              <b>Дата внесения в каталог:</b> {{ object.created }}<br>
+              <b>Дата последнего изменения:</b> {{ object.updated }}</small></p><br>
+              <br>
+              {% if perms.books.change_book %}
+              <a class="btn btn-outline-primary" href="{% url 'books:book-update' object.pk %}" role="button">Изменить</a>
+              {% endif %}
+              {% if perms.books.delete_book %}
+              <a class="btn btn-outline-danger" href="{% url 'books:book-delete' object.pk %}" role="button">Удалить</a>
+              {% endif %}
+            </p>
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a class="btn btn-primary" href="#" role="button">В корзину</a>
+              <a class="btn btn-outline-primary" href="{% url 'books:book-list' %}" role="button">К списку книг</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    
+{% endblock body %}

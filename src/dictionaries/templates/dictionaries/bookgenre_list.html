@@ -35,9 +35,9 @@
     </table>
 
     <br>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
+    <a class="btn btn-outline-primary" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
     {% if perms.dictionaries.add_bookgenre %}
-    <a class="btn btn-success btn-sm" href="{% url 'manuals:bookgenre-create' %}" role="button">Добавить книжный жанр</a>
+    <a class="btn btn-success" href="{% url 'manuals:bookgenre-create' %}" role="button">Добавить книжный жанр</a>
     {% endif %}
 
 {% endblock body %}

@@ -1,0 +1,54 @@
+{% extends 'base_out.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Cart Edit{% endblock title %}
+
+{% block body %}
+<br>
+<h1>Ваш заказ:</h1>
+<br>
+<form action="{% url 'carts:update-cart' %}" method="post">
+      
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Книга</th>
+        <th scope="col">Количество</th>
+        <th scope="col">Стоимость</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for good_in_cart in object.goods.all %}    
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{% for author in good_in_cart.book.author.all %}
+                {{ author.name }}
+            {% endfor %}
+            <b>"{{ good_in_cart.book.name }}"</b>
+        </td>
+        <td>{{ good_in_cart.quantity }}</td>
+        <td>{{ good_in_cart.total_price }}</td>
+
+      </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="3">Итого:</td>
+        <td>{{ object.total_price }}</td>
+        <td>-</td>
+    </tr>
+
+    </table>
+
+</form>
+<h5>Для продолжения оформления заказа заполните контактную информацию:</h5>
+<form action="{% url 'orders:create-order' %}" method="post">
+  {{ form|crispy }}
+  {% csrf_token %}
+  <br>
+  <a href="{% url 'carts:cart-edit' %}" class="btn btn-outline-secondary">Редактировать</a>
+  <button type="submit" class="btn btn-secondary">Заказать</button>
+</form>
+
+
+{% endblock body %}

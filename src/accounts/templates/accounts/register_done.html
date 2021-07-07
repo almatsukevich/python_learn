@@ -1,0 +1,12 @@
+{% extends "base_auth.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<main class="form-signin">
+    <h1>BookShop</h1>
+    <br>
+    <h1>Добро пожаловать {{ new_user.first_name }}!</h1>
+    <p>Ваша учетная запись была успешно создана. Теперь вы можете <a href="{% url 'accounts:login' %}">войти</a>.</p>
+</main>
+{% endblock body %}

@@ -10,8 +10,8 @@
         {% csrf_token %}
         {{ form|crispy }}
         <br>
-        <button type="submit" class="btn btn-success btn-sm">Принять</button>
-        <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
+        <button type="submit" class="btn btn-success">Принять</button>
+        <a class="btn btn-outline-primary" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
     </form>
 
 {% endblock body %}

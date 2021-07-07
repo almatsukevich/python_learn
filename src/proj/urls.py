@@ -27,9 +27,10 @@ from dictionaries import views as dict_views
 urlpatterns = [
     path('', dict_views.Home.as_view(), name = 'home'),
     path('manuals/', include('dictionaries.urls', namespace = 'manuals')),
-    path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(template_name='accounts/logget_out.html'), name='logout'),
-    path('accounts/password-change/', auth_views.PasswordChangeView.as_view(template_name='accounts/password_change.html'), name='password-change'),
+    path('accounts/', include('accounts.urls', namespace = 'accounts')),
+    path('books/', include('books.urls', namespace = 'books')),
+    path('carts/', include('carts.urls', namespace = 'carts')),
+    path('orders/', include('orders.urls', namespace = 'orders')),
     path('s-admin/', admin.site.urls),
 ] 
 

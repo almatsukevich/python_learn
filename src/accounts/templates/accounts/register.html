@@ -1,0 +1,17 @@
+{% extends "base_auth.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Создание аккаунта{% endblock %}
+
+{% block body %}
+<main class="form-signin">
+    <h1>BookShop</h1>
+    <br>
+    <h2>Регистрация</h2>
+    <p>Пожалуйста, зарегистрируйтесь, используя следующую форму:</p>
+    <form action="." method="post">
+        {{ user_form|crispy }}
+        {% csrf_token %}
+        <p><input type="submit" value="Create my account"></p>
+    </form>
+</main>
+{% endblock body %}

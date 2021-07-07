@@ -86,3 +86,43 @@ class Publusher(models.Model):
     class Meta:
         verbose_name = "Издательство"
         verbose_name_plural = "Издательства"
+
+class Binding(models.Model):
+    variant = models.CharField(
+        verbose_name = "Переплет",
+        max_length=10)
+    def __str__(self) ->str:
+        return self.variant
+    class Meta:
+        verbose_name = "Тип переплета"
+        verbose_name_plural = "Типы переплета"
+
+class BookFormat(models.Model):
+    variant = models.CharField(
+        verbose_name = "Формат",
+        max_length=15)
+    def __str__(self) ->str:
+        return self.variant
+    class Meta:
+        verbose_name = "Тип формата"
+        verbose_name_plural = "Типы форматов"
+
+class AgeStop(models.Model):
+    variant = models.CharField(
+        verbose_name = "Возрастные ограничения",
+        max_length=3)
+    def __str__(self) ->str:
+        return self.variant
+    class Meta:
+        verbose_name = "Тип возрастных ограничений"
+        verbose_name_plural = "Типы возрастных ограничений"
+
+class Rating(models.Model):
+    variant = models.IntegerField(
+        verbose_name = "Рейтинг (0 - 10)")
+    def __str__(self) ->str:
+        var_str = str(self.variant)
+        return var_str
+    class Meta:
+        verbose_name = "Значение рейтинга"
+        verbose_name_plural = "Значения рейтинга"

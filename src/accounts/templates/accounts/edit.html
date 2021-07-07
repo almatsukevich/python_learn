@@ -1,0 +1,18 @@
+{% extends "base_auth.html" %}
+
+{% block title %}Edit your account{% endblock %}
+
+{% block body %}
+<main class="form-signin">
+    <h1>BookShop</h1>
+    <br>
+    <h3>Редактирование учетной записи "{{ user }}"</h3>
+    <p>Вы можете редактировать свою учетную запись, используя следующую форму:</p>
+    <form action="." method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" class="btn btn-primary" value="Сохранить изменения"></p>
+    </form>
+</main>
+{% endblock body %}

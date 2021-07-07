@@ -1,4 +1,5 @@
 {% extends "base_auth.html" %}
+{% load crispy_forms_tags %}
 
 {% block body %}
 <main class="form-signin">
@@ -17,24 +18,18 @@
     {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="{% url 'accounts:login' %}">
 {% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
 
-<input type="submit" value="login" class="btn btn-primary">
+{{ form|crispy }}
+
+<input type="submit" value="Войти" class="btn btn-primary">
 <input type="hidden" name="next" value="{{ next }}">
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="#">Забыли пароль?</a></p>
+<br>
+<a href="{% url 'accounts:register' %}" class="btn btn-primary">Зарегистрироваться</a>
 </main>
 {% endblock %}

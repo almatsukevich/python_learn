@@ -35,9 +35,9 @@
     </table>
 
     <br>
-    <a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
+    <a class="btn btn-outline-primary" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
     {% if perms.dictionaries.add_publusher %}
-    <a class="btn btn-success btn-sm" href="{% url 'manuals:publisher-create' %}" role="button">Добавить издательство</a>
+    <a class="btn btn-success" href="{% url 'manuals:publisher-create' %}" role="button">Добавить издательство</a>
     {% endif %}
 
 {% endblock body %}

@@ -1,0 +1,17 @@
+{% extends 'base_out.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Create Book{% endblock title %}
+
+{% block body %}
+<br>
+    <h2>Добавить/изменить книгу</h2>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button type="submit" class="btn btn-success">Принять</button>
+        <a class="btn btn-outline-primary" href="{% url 'books:book-list' %}" role="button">К списку книг</a>
+    </form>
+
+{% endblock body %}

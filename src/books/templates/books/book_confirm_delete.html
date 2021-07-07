@@ -1,0 +1,27 @@
+{% extends 'base_out.html' %}
+{% block title %}Delete Book{% endblock title %}
+
+{% block body %}
+<br>
+<h2>Удаление книги</h2>
+<br>
+<div class="alert alert-primary d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+    <div>
+    <h4>Вы действительно хотите удалить книгу {{ object.name }}?</h4>
+      Нажимая кнопку "Да" вы подтверждаете безвозвратное удаление записи о книге
+    <br>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-sm">Да</button>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'books:book' object.pk %}" role="button">Посмотреть карточку книги</a>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'books:book-list' %}" role="button">К списку книг</a>
+    </form>
+    </div>
+  </div>
+   
+<script>
+    
+</script>
+{% endblock body %}

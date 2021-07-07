@@ -18,7 +18,7 @@
     {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="{% url 'accounts:login' %}">
 {% csrf_token %}
 
 {{ form|crispy }}
@@ -29,5 +29,7 @@
 
 {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="#">Забыли пароль?</a></p>
+<br>
+<a href="{% url 'accounts:register' %}" class="btn btn-primary">Зарегистрироваться</a>
 </main>
 {% endblock %}

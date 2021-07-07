@@ -1,0 +1,20 @@
+{% extends "base_auth.html" %}
+
+{% block title %}Your account{% endblock %}
+
+{% block body %}
+<main class="form-signin">
+    <h1>BookShop</h1>
+    <br>
+    <h3>Учетная запись "{{ user }}"</h3>
+    <p>Вы можете редактировать свою учетную запись, используя следующую форму:</p>
+    <form enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <a class="btn btn-primary" href="{% url 'accounts:edit' %}" role="button">Изменить</a>
+        <a class="btn btn-outline-primary" href="{% url 'home' %}" role="button">На главную</a>
+        <a class="btn btn-outline-primary" href="{% url 'accounts:logout'%}" role="button">Выйти</a>
+    </form>
+</main>
+{% endblock body %}

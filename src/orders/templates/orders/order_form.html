@@ -1,0 +1,17 @@
+{% extends 'base_out.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Update Order{% endblock title %}
+
+{% block body %}
+<br>
+    <h2>Редактировать заказ</h2>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button type="submit" class="btn btn-success">Принять</button>
+        <a class="btn btn-outline-primary" href="{% url 'orders:orders-list' %}" role="button">К списку заказов</a>
+    </form>
+
+{% endblock body %}

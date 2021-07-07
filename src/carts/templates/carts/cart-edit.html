@@ -1,0 +1,54 @@
+{% extends 'base_out.html' %}
+{% block title %}Cart Edit{% endblock title %}
+
+{% block body %}
+<br>
+<h1>Товары в корзине</h1>
+<br>
+<form action="{% url 'carts:update-cart' %}" method="post">
+    <p class="card-text"><small class="text-muted">Создано: {{ object.created }}<br>
+    Изменено: {{ object.updated }}</small></p>
+      
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Книга</th>
+        <th scope="col">Количество</th>
+        <th scope="col">Стоимость</th>
+        <th scope="col">-</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for good_in_order in object.goods.all %}    
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{% for author in good_in_cart.book.author.all %}
+                {{ author.name }}
+            {% endfor %}
+            <b>"{{ good_in_cart.book.name }}"</b>
+        </td>
+        <td>
+            <div class="mb-3">
+                <input type="number" name="quantityforgood_{{good_in_cart.pk}}" min="0" step="1" class="form-control" value="{{ good_in_cart.quantity }}">
+              </div>
+        </td>
+        <td>{{ good_in_cart.total_price }}</td>
+        <td><a href="{% url 'carts:delete-good-in-cart' good_in_cart.pk %}" class="btn btn-sm btn-danger">Удалить</a>
+        </td>
+      </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="3">Итого:</td>
+        <td>{{ object.total_price }}</td>
+        <td>-</td>
+    </tr>
+
+    </table>
+{% csrf_token %}
+<button type="submit" class="btn btn-outline-secondary" name="submit" value="save_cart">Пересчитать</button>
+<button type="submit" class="btn btn-secondary" name="submit" value="create_order">Оформить заказ</button>
+
+</form>
+
+{% endblock body %}
