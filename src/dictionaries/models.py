@@ -126,3 +126,14 @@ class Rating(models.Model):
     class Meta:
         verbose_name = "Значение рейтинга"
         verbose_name_plural = "Значения рейтинга"
+
+
+class Status(models.Model):
+    variant = models.CharField(
+        verbose_name = "Статус заказа",
+        max_length=10)
+    def __str__(self) ->str:
+        return self.variant
+    class Meta:
+        verbose_name = "Статус заказа"
+        verbose_name_plural = "Статусы заказа"

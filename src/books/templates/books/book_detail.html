@@ -1,4 +1,5 @@
 {% extends 'base_out.html' %}
+{% load template_tags %}
 {% block title %}Book{% endblock title %}
 
 {% block body %}
@@ -57,5 +58,5 @@
           </div>
         </div>
       </div>
-    
+    {% show_comments %}
 {% endblock body %}

@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-    {% for good_in_order in object.goods.all %}    
+    {% for good_in_cart in object.goods.all %}    
       <tr>
         <td>{{ forloop.counter }}</td>
         <td>{% for author in good_in_cart.book.author.all %}

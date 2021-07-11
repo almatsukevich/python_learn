@@ -11,7 +11,7 @@ class Profile(models.Model):
 
     phone = models.CharField(
         verbose_name = "Телефон",
-        max_length=15)
+        max_length=18)
 
     country = models.CharField(
         verbose_name = "Страна",

@@ -26,6 +26,9 @@ class AgeStopAdmin(admin.ModelAdmin):
 class RatingAdmin(admin.ModelAdmin):
     list_display = ['pk', 'variant']
 
+class StatusAdmin(admin.ModelAdmin):
+    list_display = ['pk', 'variant']
+
 # Register your models here.
 admin.site.register(models.Author, AuthorAdmin)
 admin.site.register(models.BookSeries, BookSeriesAdmin)
@@ -36,3 +39,4 @@ admin.site.register(models.Binding, BindingAdmin)
 admin.site.register(models.BookFormat, BookFormatAdmin)
 admin.site.register(models.AgeStop, AgeStopAdmin)
 admin.site.register(models.Rating, RatingAdmin)
+admin.site.register(models.Status, StatusAdmin)

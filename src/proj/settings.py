@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
-    'cities',
     'dictionaries',
     'books',
     'carts',
     'orders',
+    'comments',
     'crispy_forms',
 ]
 

@@ -1,5 +1,6 @@
 from django.db import models
 from carts.models import Cart
+from dictionaries.models import Status
 
 # Create your models here.
 class Order(models.Model):
@@ -7,11 +8,30 @@ class Order(models.Model):
         Cart,
         on_delete=models.PROTECT,
         related_name="carts",
-        verbose_name="Заказ"
+        verbose_name="Корзина"
     )
 
+    status = models.ForeignKey(
+        Status,
+        on_delete=models.PROTECT,
+        default=1,
+        verbose_name = "Статус заказа"
+    )
+
+    customer_name = models.CharField(
+        verbose_name = "Имя пользователя",
+        max_length=30,
+        )
+    
+    customer_phone = models.CharField(
+        verbose_name = "Телефон пользователя",
+        max_length=18,
+        )
+
     contact_info=models.TextField(
-        verbose_name="Контактная информация"
+        verbose_name="Контактная информация",
+        blank=True,
+        null=True,
     )
 
     created = models.DateTimeField(

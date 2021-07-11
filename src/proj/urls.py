@@ -21,7 +21,7 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 
 
-from cities import views as cities_views
+
 from dictionaries import views as dict_views
 
 urlpatterns = [
@@ -31,6 +31,7 @@ urlpatterns = [
     path('books/', include('books.urls', namespace = 'books')),
     path('carts/', include('carts.urls', namespace = 'carts')),
     path('orders/', include('orders.urls', namespace = 'orders')),
+    path('comments/', include('comments.urls', namespace = 'comments')),
     path('s-admin/', admin.site.urls),
 ] 
 

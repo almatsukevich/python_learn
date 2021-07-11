@@ -3,6 +3,8 @@
 {% block title %}Cart Edit{% endblock title %}
 
 {% block body %}
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="col-lg-15">
 <br>
 <h1>Ваш заказ:</h1>
 <br>
@@ -33,14 +35,15 @@
       </tr>
     {% endfor %}
     <tr>
-        <td colspan="3">Итого:</td>
-        <td>{{ object.total_price }}</td>
-        <td>-</td>
+        <td colspan="3"><h4>Итого:</h4></td>
+        <td><h4>{{ object.total_price }} BYN</h4></td>
+
     </tr>
 
     </table>
 
 </form>
+<div class="col-lg-8">
 <h5>Для продолжения оформления заказа заполните контактную информацию:</h5>
 <form action="{% url 'orders:create-order' %}" method="post">
   {{ form|crispy }}
@@ -49,6 +52,7 @@
   <a href="{% url 'carts:cart-edit' %}" class="btn btn-outline-secondary">Редактировать</a>
   <button type="submit" class="btn btn-secondary">Заказать</button>
 </form>
-
-
+</div>
+</div>
+</div>
 {% endblock body %}

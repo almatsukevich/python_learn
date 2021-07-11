@@ -1,4 +1,5 @@
 {% extends 'base_out.html' %}
+{% load template_tags %}
 {% block title %}Order{% endblock title %}
 
 {% block body %}
@@ -6,7 +7,8 @@
         
           <div class="col-lg-15">
             <h1 class="display-5 fw-bold lh-1 mb-3">Заказ №{{ object.pk }}</h1>
-            <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
+            <h3>Статус: {{ object.status }}</h3>
+            
             <p class="lead">
              
               <table class="table">
@@ -34,30 +36,29 @@
                   </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="3">Общая стоимость заказа:</td>
-                    <td>{{ object.cart.total_price }}</td>
-                    <td>-</td>
+                    <td colspan="3"><h4>Общая стоимость заказа:</h4></td>
+                    <td><h4>{{ object.cart.total_price }} BYN</h4></td>
                 </tr>
-            
                 </table>
-              <b>Год издания:</b> {{ object.pk }}<br>
-              <p><small>
-              <b>Дата создания:</b> {{ object.pk }}<br>
-              <b>Дата изменения:</b> {{ object.pk }}</small></p><br>
+              <b>Имя:</b> {{ object.customer_name }}<br>
+              <b>Контактный телефон:</b> {{ object.customer_phone }}<br>
+              <b>Адрес доставки:</b> {{ object.contact_info }}<br>
+              <br>
+              <p class="card-text"><small class="text-muted">
+              <b>Дата создания:</b> {{ object.created }}<br>
+              <b>Дата изменения:</b> {{ object.updated }}
+              </small></p>
               <br>
               {% if perms.orders.change_order %}
               <a class="btn btn-outline-primary" href="{% url 'orders:order-update' object.pk %}" role="button">Изменить</a>
               {% endif %}
 
             </p>
-            <br>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-   
-              <a class="btn btn-outline-primary" href="{% url 'orders:orders-list' %}" role="button">К списку заказов</a>
-
+             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+               <a class="btn btn-outline-primary" href="{% url 'orders:orders-list' %}" role="button">К списку заказов</a>
             </div>
           </div>
         </div>
       </div>
-    
+      {% show_comments %}
 {% endblock body %}
