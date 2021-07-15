@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'accounts.apps.AccountsConfig',
     'dictionaries',
     'books',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'orders',
     'comments',
     'crispy_forms',
+    'search'
 ]
 
 MIDDLEWARE = [

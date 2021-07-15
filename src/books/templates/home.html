@@ -1,0 +1,24 @@
+{% extends 'base_out.html' %}
+{% load new_books_tags %}
+{% block title %}Home Page{% endblock title %}
+
+{% block body %}
+<br>
+<br>
+    <p class="text-center display-5 fw-bold lh-1 mb-3">Новинки магазина</p>
+    <br>
+    {% show_new_books %}
+    <br>
+    <br>
+    <p class="text-center display-5 fw-bold lh-1 mb-3">Популярное</p>
+    <br>
+    {% show_popular_books %}
+    <br>
+    <br>
+    <p class="text-center display-5 fw-bold lh-1 mb-3">Рекомендации</p>
+    <br>
+    {% show_random_books %}
+    <br>
+    <br>
+    
+{% endblock body %}

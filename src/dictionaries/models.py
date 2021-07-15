@@ -1,8 +1,7 @@
 from django.db import models
 
-
-
 # Create manual "Authors"
+
 class Author(models.Model):
     name = models.CharField(
         verbose_name = "Фамилия.И.О автора",
@@ -17,6 +16,13 @@ class Author(models.Model):
         "Изображение",
         upload_to='authors/'
     )
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('manuals:author', kwargs={'pk' : self.pk})
+
+    def to_class_name(self):
+        return self._meta.verbose_name_plural
 
     def __str__(self) ->str:
         return self.name
@@ -39,7 +45,13 @@ class BookSeries(models.Model):
 
     def __str__(self) ->str:
         return self.name
+   
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('manuals:bookseries', kwargs={'pk' : self.pk})
 
+    def to_class_name(self):
+        return self._meta.verbose_name_plural
     class Meta:
         verbose_name = "Книжная серия"
         verbose_name_plural = "Книжные серии"
@@ -59,6 +71,12 @@ class BookGenre(models.Model):
     def __str__(self) ->str:
         return self.name
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('manuals:bookgenre', kwargs={'pk' : self.pk})
+
+    def to_class_name(self):
+        return self._meta.verbose_name_plural
     class Meta:
         verbose_name = "Жанр"
         verbose_name_plural = "Жанры"
@@ -83,6 +101,12 @@ class Publusher(models.Model):
     def __str__(self) ->str:
         return self.name
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('manuals:publisher', kwargs={'pk' : self.pk})
+
+    def to_class_name(self):
+        return self._meta.verbose_name_plural
     class Meta:
         verbose_name = "Издательство"
         verbose_name_plural = "Издательства"
@@ -137,3 +161,6 @@ class Status(models.Model):
     class Meta:
         verbose_name = "Статус заказа"
         verbose_name_plural = "Статусы заказа"
+
+
+ 

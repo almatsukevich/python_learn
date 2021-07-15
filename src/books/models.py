@@ -1,7 +1,9 @@
 from django.db import models
 from dictionaries.models import Author, BookSeries, BookGenre, Publusher, Binding, BookFormat, AgeStop, Rating
 
+
 # Create your models here.
+
 class Book(models.Model):
     name = models.CharField(
         verbose_name = "Название книги",
@@ -105,9 +107,20 @@ class Book(models.Model):
         auto_now_add=False
     )
 
+    num_orders = models.IntegerField(
+        verbose_name = "Количество заказов",
+        default=0
+    )
+
     def __str__(self) ->str:
         return self.name
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('books:book', kwargs={'pk' : self.pk})
+
+    def to_class_name(self):
+        return self._meta.verbose_name_plural
     class Meta:
         verbose_name = "Книга"
         verbose_name_plural = "Книги"

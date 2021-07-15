@@ -1,4 +1,4 @@
-{% extends 'base_in.html' %}
+{% extends 'base_out.html' %}
 {% block title %}Authors{% endblock title %}
 
 {% block body %}
@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Фамилия И.О.</th>
             {% if perms.dictionaries.change_author %}
             <th scope="col">Изменение</th>
@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-        {% for author in object_list %}
+        {% for author in page_obj %}
             <tr>
                 <th scope="row">{{ author.pk }}</th>
                 <td><a href="{% url 'manuals:author' author.pk %}">{{ author }}</a></td>
@@ -33,7 +33,8 @@
             {% endfor %}
         </tbody>
     </table>
-
+    <br>
+    {% include "paginator.html" %}
     <br>
     <a class="btn btn-outline-primary" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
     {% if perms.dictionaries.add_author %}

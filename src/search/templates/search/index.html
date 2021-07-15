@@ -1,0 +1,23 @@
+{% extends 'base_out.html' %}
+
+{% block title %}Поиск{% endblock title %}
+
+{% block body %}
+<br>
+<h1 class="display-5 fw-bold lh-1 mb-3">Результаты поиска</h1>
+<br>
+
+{% if object_lists %}
+<p class="h3  lh-1 mb-5">По запросу "{{ question }}" найдено следующее:</p>
+    {% for object in object_lists %}
+        <article class="h5 lh-1 mb-4">
+          {{ forloop.counter }}.  "<a href="{{ object.get_absolute_url }}">{{ object.name }}</a>"  Раздел сайта: {{ object.to_class_name }}
+         
+        </article>
+    {% endfor %}
+    {% include "paginator.html" %}
+{% else %}
+    <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+{% endif %}
+    
+{% endblock body %}

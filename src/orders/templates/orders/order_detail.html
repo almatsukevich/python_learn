@@ -25,10 +25,10 @@
                 {% for good_in_order in object.cart.goods.all %}    
                   <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{% for author in good_in_order.book.author.all %}
+                    <td> {%for author in good_in_order.book.author.all %}
                             {{ author.name }}
                         {% endfor %}
-                        <b>"{{ good_in_order.book.name }}"</b>
+                        <b><a href="{% url 'books:book' good_in_order.book.pk %}">"{{ good_in_order.book.name }}"</a></b>
                     </td>
                     <td>{{ good_in_order.quantity }}</td>
                     <td>{{ good_in_order.total_price }}</td>

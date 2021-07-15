@@ -1,4 +1,5 @@
 {% load static %}
+{% load currency_tag %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -53,26 +54,40 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
+                  <a class="nav-link active" href="{% url 'orders:orders-list' %}">Заказы</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Заказы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Книги</a>
+                    <a class="nav-link active" href="{% url 'books:book-list' %}">Книги</a>
                   </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'manuals:manuals-home' %}">Справочники</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link active" href="{% url 'manuals:manuals-home' %}">Справочники</a>
                 </li>
               </ul>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+              <a href="{% url 'carts:cart-edit'%}" class="btn btn-outline-light">Корзина</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <p class="text-light h6">BYN/USD {% currency_rate %}</p>
+              </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <form action="{% url 'search:index' %}" class="navbar-form navbar-left" method="get">
+                <div class="input-group">
+                    <input id="search" name="q" type="text" class="form-control" placeholder="Поиск">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-light">Поиск</button>
+                    </span>
+                </div>
+            </form>
+          </ul>
+
             </div>
           </div>
           {% if user.is_authenticated %}

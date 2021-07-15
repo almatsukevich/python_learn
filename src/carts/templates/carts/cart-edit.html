@@ -2,6 +2,8 @@
 {% block title %}Cart Edit{% endblock title %}
 
 {% block body %}
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="col-lg-15">
 <br>
 <h1>Товары в корзине</h1>
 <br>
@@ -16,7 +18,7 @@
         <th scope="col">Книга</th>
         <th scope="col">Количество</th>
         <th scope="col">Стоимость</th>
-        <th scope="col">-</th>
+        <th scope="col">Редактировать</th>
       </tr>
     </thead>
     <tbody>
@@ -26,11 +28,11 @@
         <td>{% for author in good_in_cart.book.author.all %}
                 {{ author.name }}
             {% endfor %}
-            <b>"{{ good_in_cart.book.name }}"</b>
+            <b><a href="{% url 'books:book' good_in_cart.book.pk %}">"{{ good_in_cart.book.name }}"</a></b>
         </td>
         <td>
             <div class="mb-3">
-                <input type="number" name="quantityforgood_{{good_in_cart.pk}}" min="0" step="1" class="form-control" value="{{ good_in_cart.quantity }}">
+                <input type="number" name="quantityforgood_{{good_in_cart.pk}}" min="1" max="{{ good_in_cart.book.quantity }}" step="1"  class="form-control" value="{{ good_in_cart.quantity }}">
               </div>
         </td>
         <td>{{ good_in_cart.total_price }}</td>
@@ -39,9 +41,9 @@
       </tr>
     {% endfor %}
     <tr>
-        <td colspan="3">Итого:</td>
-        <td>{{ object.total_price }}</td>
-        <td>-</td>
+        <td colspan="3"><b>Итого:</b></td>
+        <td><b>{{ object.total_price }} BYN</b> </td>
+        <td></td>
     </tr>
 
     </table>
@@ -50,5 +52,6 @@
 <button type="submit" class="btn btn-secondary" name="submit" value="create_order">Оформить заказ</button>
 
 </form>
-
+</div>
+</div>
 {% endblock body %}

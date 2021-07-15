@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row align-items-start">
+    {%  for book in random_books  %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{ book.picture.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ book.name }}</h5>
+          <p class="card-text">
+            <b>Автор:</b> {% for author in book.author.all %}
+               {{ author.name }}
+              {% endfor %}
+            <br>
+            <h3>{{ book.unit_price }} BYN</h3>
+        </p>
+          <a href="{% url 'carts:cart-edit' %}?book_id={{ book.pk }}" class="btn btn-primary">В корзину</a>
+          <a href="{% url 'books:book' book.pk %}" class="btn btn-outline-primary">Подробнее</a>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+</div>

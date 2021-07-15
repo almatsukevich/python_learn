@@ -11,7 +11,8 @@ class OrderCreateForm(forms.Form):
     customer_phone = forms.CharField(
         label="Телефон", 
         required=True,
-        widget=forms.TextInput
+        widget=forms.TextInput,
+        help_text="+375291234567"
         )
 
     contact_info = forms.CharField(
@@ -21,4 +22,8 @@ class OrderCreateForm(forms.Form):
 class OrderUpdateForm(forms.ModelForm):
     class Meta:
         model = models.Order
-        fields = '__all__'
+        fields = [
+            'status',
+            'customer_name',
+            'customer_phone',
+            'contact_info']

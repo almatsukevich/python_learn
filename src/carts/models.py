@@ -45,7 +45,8 @@ class BooksInCart(models.Model):
     book = models.ForeignKey(
         'books.Book',
         on_delete=models.PROTECT,
-        verbose_name="Book"
+        related_name="orders",
+        verbose_name="Книга"
     )
     quantity = models.IntegerField(
         verbose_name="Количество",

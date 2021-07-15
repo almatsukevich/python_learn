@@ -4,7 +4,9 @@
 
 {% block body %}
 <br>
-    <h2>Редактировать заказ</h2>
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="col-lg-15">
+    <h2>Редактировать заказ №{{object.pk}}</h2>
     <br>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -13,5 +15,6 @@
         <button type="submit" class="btn btn-success">Принять</button>
         <a class="btn btn-outline-primary" href="{% url 'orders:orders-list' %}" role="button">К списку заказов</a>
     </form>
-
+</div>
+</div>
 {% endblock body %}

@@ -1,16 +1,59 @@
-{% extends 'base_in.html' %}
+{% extends 'base_out.html' %}
 {% block title %}Manuals{% endblock title %}
 
 {% block body %}
 <br>
+<div class="container col-xxl-8 px-4 py-5">
     <h1>Справочники</h1>
     <br>
-    <u1>
-        <li><a href="{% url 'manuals:authors-list' %}">Авторы</a> </li>
-        <li><a href="{% url 'manuals:bookseries-list' %}">Книжные серии</a> </li>
-        <li><a href="{% url 'manuals:bookgenres-list' %}">Жанры</a> </li>
-        <li><a href="{% url 'manuals:publishers-list' %}">Издательства</a> </li>
-    </u1>
+
+        <div class="card">
+            <div class="card-header">
+              Справочник
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Авторы</h5>
+              <p class="card-text">Содержит информацию об авторах, описание жизни и творчества</p>
+              <a href="{% url 'manuals:authors-list' %}" class="btn btn-primary">Перейти</a>
+            </div>
+          </div>
+         <br>
+          <div class="card">
+            <div class="card-header">
+              Справочник
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Книжные серии</h5>
+              <p class="card-text">Информация о книжных сериях, составе книг и годах издания</p>
+              <a href="{% url 'manuals:bookseries-list' %}" class="btn btn-primary">Перейти</a>
+            </div>
+          </div>
+
+          <br>
+          <div class="card">
+            <div class="card-header">
+              Справочник
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Книжные жанры</h5>
+              <p class="card-text">Книжные жанры и их описание</p>
+              <a href="{% url 'manuals:bookgenres-list' %}" class="btn btn-primary">Перейти</a>
+            </div>
+          </div>
+
+          <br>
+          <div class="card">
+            <div class="card-header">
+              Справочник
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Издательства</h5>
+              <p class="card-text">Список издательств, информация об издательствах</p>
+              <a href="{% url 'manuals:publishers-list' %}" class="btn btn-primary">Перейти</a>
+            </div>
+          </div>
+
     <br>
-    <a href="{% url 'home' %}">На главную</a>
+    <a href="{% url 'home' %}" class="btn btn-primary">На главную</a>
+</div>
 {% endblock body %}

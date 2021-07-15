@@ -10,6 +10,7 @@ class BookDetailView(DetailView):
 
 class BookListView(ListView):
     model = models.Book
+    paginate_by = 12
 
 class BookCreateView(PermissionRequiredMixin, CreateView):
     model = models.Book
@@ -31,3 +32,7 @@ class BookDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('books:book-list')
     login_url = '/accounts/login/'
     permission_required = ('books.delete_book')
+
+
+class Home(TemplateView):
+    template_name = 'home.html'

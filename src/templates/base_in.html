@@ -57,18 +57,19 @@
                   <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Заказы</a>
+                  <a class="nav-link active" href="{% url 'orders:orders-list' %}">Заказы</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Книги</a>
+                    <a class="nav-link active" href="{% url 'books:book-list' %}">Книги</a>
                   </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'manuals:manuals-home' %}">Справочники</a>
+                    <a class="nav-link active" href="{% url 'manuals:manuals-home' %}">Справочники</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
               </ul>
+              <a href="{% url 'carts:cart-edit'%}" class="btn btn-outline-light">Корзина</a>
               <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>

@@ -3,12 +3,11 @@
 
 {% block body %}
 <br>
-<h1>Заказы</h1>
+<h1 class="display-5 fw-bold lh-1 mb-3">Заказы ({{ paginator.count }})</h1>
 <br>
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">№</th>
         <th scope="col">Номер заказа</th>
         {% if perms.orders.change_order %}
         <th scope="col">Пользователь</th>
@@ -26,22 +25,18 @@
       </tr>
     </thead>
     <tbody>
-    {% for order in object_list %}
+    {% for order in page_obj %}
         <tr>
-            <th scope="row">{{ forloop.counter }}</th>
             <td><a href="{% url 'orders:order' order.pk %}">Заказ №{{ order.pk }}</a> </td>
             {% if perms.orders.change_order %}
-            <td>{% if order.cart.customer.username == None %}
-              Незарегистрированый пользователь
-              {% else %} {{ order.cart.customer.username }}
-              {% endif %}
+            <td>{{ order.customer_name }}
             </td>
             {% endif %}
-            <td>Сумма (BYN)</td>
-            <td>Статус</td>
-            <td>Дата создания</td>
+            <td>{{ order.cart.total_price }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.created }}</td>
             {% if perms.orders.change_order %}
-            <td>Дата изменения</td>
+            <td>{{ order.updated }}</td>
             {% endif %}
             {% if perms.orders.change_order %}
             <td><a class="btn btn-outline-primary btn-sm" href="{% url 'orders:order-update' order.pk %}" role="button">Изменить</a></td>
@@ -51,7 +46,8 @@
         {% endfor %}
     </tbody>
 </table>
-
+<br>
+{% include "paginator.html" %}
 <br>
 <a class="btn btn-outline-primary" href="{% url 'home' %}" role="button">На главную</a>
     <br>

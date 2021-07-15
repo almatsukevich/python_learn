@@ -11,9 +11,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 # def home(request):
 #     return render(request, template_name="manuals_home.html", context = {})
 
-
-class Home(TemplateView):
-    template_name = 'home.html'
 class ManualsHome(TemplateView):
     template_name = 'dictionaries/manuals_home.html'
 
@@ -35,6 +32,7 @@ class AuthorDetailView(DetailView):
 #     return render(request, template_name="author_list.html", context = ctx)
 class AuthorListView(ListView):
     model = models.Author
+    paginate_by = 20
 class AuthorCreateView(PermissionRequiredMixin, CreateView):
     model = models.Author
     form_class = forms.CreateAuthorForm
@@ -75,6 +73,7 @@ class BookSeriesDetailView(DetailView):
     model = models.BookSeries
 class BookSeriesListView(ListView):
     model = models.BookSeries
+    paginate_by = 20
 class BookSeriesCreateView(PermissionRequiredMixin, CreateView):
     model = models.BookSeries
     form_class = forms.CreateBookSeriesForm
@@ -113,6 +112,7 @@ class BookGenreDetailView(DetailView):
     model = models.BookGenre
 class BookGenreListView(ListView):
     model = models.BookGenre
+    paginate_by = 20
 class BookGenreCreateView(PermissionRequiredMixin, CreateView):
     model = models.BookGenre
     form_class = forms.CreateBookGenreForm
@@ -152,6 +152,7 @@ class PublusherDetailView(DetailView):
     model = models.Publusher
 class PublusherListView(ListView):
     model = models.Publusher
+    paginate_by = 20
 class PublusherCreateView(PermissionRequiredMixin, CreateView):
     model = models.Publusher
     form_class = forms.CreatePublusherForm

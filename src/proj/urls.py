@@ -22,16 +22,18 @@ from django.contrib.auth import views as auth_views
 
 
 
-from dictionaries import views as dict_views
+
+from books import views as books_views
 
 urlpatterns = [
-    path('', dict_views.Home.as_view(), name = 'home'),
+    path('', books_views.Home.as_view(), name = 'home'),
     path('manuals/', include('dictionaries.urls', namespace = 'manuals')),
     path('accounts/', include('accounts.urls', namespace = 'accounts')),
     path('books/', include('books.urls', namespace = 'books')),
     path('carts/', include('carts.urls', namespace = 'carts')),
     path('orders/', include('orders.urls', namespace = 'orders')),
     path('comments/', include('comments.urls', namespace = 'comments')),
+    path('search/', include('search.urls', namespace = 'search')),
     path('s-admin/', admin.site.urls),
 ] 
 
