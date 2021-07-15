@@ -137,8 +137,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/var/www/static/'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = '/home/matsukevich/static/'
+MEDIA_ROOT = '/home/matsukevich/media'
 
 LOCAL_MEDIA = local_settings.LOCAL_MEDIA
 
