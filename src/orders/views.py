@@ -76,13 +76,26 @@ class OrderListView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
+        qs=super().get_queryset()
+        filter = self.request.GET.get('filter')
+        if filter == 'new':
+            qs = qs.filter(status__pk=1)
+        if filter == 'processed':
+            qs = qs.filter(status__pk=2)
+        if filter == 'go':
+            qs = qs.filter(status__pk=3)
+        if filter == 'ok':
+            qs = qs.filter(status__pk=4)
+        if filter == 'cancel':
+            qs = qs.filter(status__pk=5)
+        
         if self.request.user.groups.filter(name='Managers').exists():
-            return models.Order.objects.order_by('-created')
+            return qs.order_by('-created')
         if self.request.user.is_authenticated:
             user_now = self.request.user
-            return models.Order.objects.filter(cart__customer=user_now).order_by('-created')
+            return qs.filter(cart__customer=user_now).order_by('-created')
         else:
-            return models.Order.objects.filter(pk=0)
+            return qs.filter(pk=0)
 
 
 class OrderUpdateView(PermissionRequiredMixin, UpdateView):
@@ -102,7 +115,8 @@ class OrderUpdateView(PermissionRequiredMixin, UpdateView):
             status=Status.objects.get(pk=status_pk), 
             customer_name=customer_name, 
             customer_phone=customer_phone, 
-            contact_info=contact_info
+            contact_info=contact_info,
+            manager = self.request.user
             )
         order = models.Order.objects.get(pk=self.kwargs.get('pk'))
         print(order)

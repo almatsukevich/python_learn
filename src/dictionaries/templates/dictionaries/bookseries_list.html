@@ -27,7 +27,7 @@
                 <td><a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookseries-update' object.pk %}" role="button">Изменить</a></td>
                 {% endif %}
                 {% if perms.dictionaries.delete_bookseries %}
-                <td><a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookgenre-delete' object.pk %}" role="button">Удалить</a></td>
+                <td><a class="btn btn-outline-primary btn-sm" href="{% url 'manuals:bookseries-delete' object.pk %}" role="button">Удалить</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

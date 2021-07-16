@@ -22,7 +22,10 @@
             <br>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
               <a class="btn btn-primary" href="{% url 'manuals:publishers-list' %}" role="button">К списку издательств</a>
-              <a class="btn btn-outline-primary" href="#" role="button">Все книги издательства</a>
+              <form action="{% url 'books:book-list' %}" method="get">
+                <input type="hidden" name="publusher_pk" value="{{ object.pk }}">
+                <button type="submit" class="btn btn-outline-primary">Все книги издательства</button>
+              </form>
             </div>
           </div>
         </div>

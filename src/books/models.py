@@ -1,9 +1,6 @@
 from django.db import models
 from dictionaries.models import Author, BookSeries, BookGenre, Publusher, Binding, BookFormat, AgeStop, Rating
 
-
-# Create your models here.
-
 class Book(models.Model):
     name = models.CharField(
         verbose_name = "Название книги",

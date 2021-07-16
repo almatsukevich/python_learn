@@ -6,11 +6,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 
 
 # Create your views here.
-
-# Create home view
-# def home(request):
-#     return render(request, template_name="manuals_home.html", context = {})
-
 class ManualsHome(TemplateView):
     template_name = 'dictionaries/manuals_home.html'
 
@@ -54,21 +49,6 @@ class AuthorDeleteView(PermissionRequiredMixin, DeleteView):
     login_url = '/accounts/login/'
     permission_required = ('dictionaries.delete_author')
 
-
-# def bookserie_detail(request, bookserie_id):
-#     bookserie = models.BookSeries.objects.get(pk=bookserie_id)
-#     ctx = {
-#             'bookserie': bookserie
-#         }
-#     return render(request, template_name="bookserie_detail.html", context = ctx)
-
-# def bookseries_list(request):
-#     bookseries_list = models.BookSeries.objects.all()
-#     ctx = {
-#             'bookseries_list': bookseries_list
-#         }
-#     return render(request, template_name="bookseries_list.html", context = ctx)
-
 class BookSeriesDetailView(DetailView):
     model = models.BookSeries
 class BookSeriesListView(ListView):
@@ -93,21 +73,6 @@ class BookSeriesDeleteView(PermissionRequiredMixin, DeleteView):
     login_url = '/accounts/login/'
     permission_required = ('dictionaries.delete_bookseries')
 
-
-# def bookgenre_detail(request, bookgenre_id):
-#     bookgenre = models.BookGenre.objects.get(pk=bookgenre_id)
-#     ctx = {
-#             'bookgenre': bookgenre
-#         }
-#     return render(request, template_name="bookgenre_detail.html", context = ctx)
-
-# def bookgenres_list(request):
-#     bookgenres_list = models.BookGenre.objects.all()
-#     ctx = {
-#             'bookgenres_list': bookgenres_list
-#         }
-#     return render(request, template_name="bookgenres_list.html", context = ctx)
-
 class BookGenreDetailView(DetailView):
     model = models.BookGenre
 class BookGenreListView(ListView):
@@ -131,22 +96,6 @@ class BookGenreDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('manuals:bookgenres-list')
     login_url = '/accounts/login/'
     permission_required = ('dictionaries.delete_bookgenre')
-
-
-
-# def publisher_detail(request, publisher_id):
-#     publisher = models.Publusher.objects.get(pk=publisher_id)
-#     ctx = {
-#             'publisher': publisher
-#         }
-#     return render(request, template_name="publisher_detail.html", context = ctx)
-
-# def publisher_list(request):
-#     publisher_list = models.Publusher.objects.all()
-#     ctx = {
-#             'publisher_list': publisher_list
-#         }
-#     return render(request, template_name="publisher_list.html", context = ctx)
 
 class PublusherDetailView(DetailView):
     model = models.Publusher
@@ -173,6 +122,3 @@ class PublusherDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('manuals:publishers-list')
     login_url = '/accounts/login/'
     permission_required = ('dictionaries.delete_publusher')
-
-
-

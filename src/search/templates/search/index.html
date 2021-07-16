@@ -10,10 +10,21 @@
 {% if object_lists %}
 <p class="h3  lh-1 mb-5">По запросу "{{ question }}" найдено следующее:</p>
     {% for object in object_lists %}
-        <article class="h5 lh-1 mb-4">
-          {{ forloop.counter }}.  "<a href="{{ object.get_absolute_url }}">{{ object.name }}</a>"  Раздел сайта: {{ object.to_class_name }}
-         
-        </article>
+
+    <div class="card">
+      <div class="card-header">
+        
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ forloop.counter }}.  {{ object.name }}</h5>
+        <p class="card-text">  
+          {%for author in object.author.all %}
+          {{ author.name }}
+      {% endfor %} Рейтинг: {{ object.rating }}  Количество заказов:  {{ object.num_orders }}  Раздел сайта: {{ object.to_class_name }}</p>
+        <a href="{{ object.get_absolute_url }}" class="btn btn-primary">Перейти</a>
+      </div>
+    </div>
+<br>
     {% endfor %}
     {% include "paginator.html" %}
 {% else %}

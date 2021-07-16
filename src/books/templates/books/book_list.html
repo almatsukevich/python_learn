@@ -10,7 +10,15 @@
    <!-- card-columns -->
    <div class="container">
     <div class="row align-items-start">
-        
+      <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="?filter=all">Все</a></li>
+        <li class="page-item"><a class="page-link" href="?filter=name">По названию</a></li>
+        <li class="page-item"><a class="page-link" href="?filter=rating">По рейтингу</a></li>
+        <li class="page-item">
+      </ul>
+      </nav>
+
         {% for book in page_obj %}
         <div class="card" style="width: 18rem;">
           <img src="{{ book.picture.url }}" class="card-img-top" alt="...">

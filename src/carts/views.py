@@ -47,10 +47,6 @@ class CartView(DetailView):
 
             book_in_cart.save()
         return cart   
-    
-# class DeleteGoodInCartView(DeleteView):
-#     model = models.BooksInCart
-#     success_url = reverse_lazy('carts:cart-edit')
 
 class DeleteGoodInCartView(RedirectView):
     model = models.BooksInCart

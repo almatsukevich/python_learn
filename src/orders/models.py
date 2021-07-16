@@ -1,6 +1,7 @@
 from django.db import models
 from carts.models import Cart
 from dictionaries.models import Status
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Order(models.Model):
@@ -44,4 +45,12 @@ class Order(models.Model):
         verbose_name = "Дата изменения",
         auto_now=True,
         auto_now_add=False
+    )
+
+    manager = models.ForeignKey(
+        User,
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True,
+        verbose_name = "Менеджер"
     )

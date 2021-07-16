@@ -5,6 +5,18 @@
 <br>
 <h1 class="display-5 fw-bold lh-1 mb-3">Заказы ({{ paginator.count }})</h1>
 <br>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="?filter=all">Все</a></li>
+    <li class="page-item"><a class="page-link" href="?filter=new">Созданые</a></li>
+    <li class="page-item"><a class="page-link" href="?filter=processed">Обработанные</a></li>
+    <li class="page-item"><a class="page-link" href="?filter=go">В пути</a></li>
+    <li class="page-item"><a class="page-link" href="?filter=ok">Доставленные</a></li>
+    <li class="page-item"><a class="page-link" href="?filter=cancel">Отмененные</a></li>
+    <li class="page-item">
+  </ul>
+  </nav>
 <table class="table">
     <thead>
       <tr>

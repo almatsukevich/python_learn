@@ -43,11 +43,15 @@
               <b>Имя:</b> {{ object.customer_name }}<br>
               <b>Контактный телефон:</b> {{ object.customer_phone }}<br>
               <b>Адрес доставки:</b> {{ object.contact_info }}<br>
+              <b>Адрес доставки:</b> {{ object.contact_info }}<br>
+              <br>
+              <b>Ваш менеджер:</b> {{ object.manager.first_name }} {{ object.manager.last_name }}, {{ object.manager.profile.phone }}<br>
               <br>
               <p class="card-text"><small class="text-muted">
               <b>Дата создания:</b> {{ object.created }}<br>
               <b>Дата изменения:</b> {{ object.updated }}
               </small></p>
+  
               <br>
               {% if perms.orders.change_order %}
               <a class="btn btn-outline-primary" href="{% url 'orders:order-update' object.pk %}" role="button">Изменить</a>
