@@ -14,9 +14,9 @@
     <br>
     <form action="" method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Да</button>
-        <a class="btn btn-outline-primary" href="{% url 'manuals:publisher' object.pk %}" role="button">Посмотреть карточку издательства</a>
-        <a class="btn btn-outline-primary" href="{% url 'manuals:publishers-list' %}" role="button">К списку издательств</a>
+        <button type="submit" class="btn btn-secondary">Да</button>
+        <a class="btn btn-outline-secondary" href="{% url 'manuals:publisher' object.pk %}" role="button">Посмотреть карточку издательства</a>
+        <a class="btn btn-outline-secondary" href="{% url 'manuals:publishers-list' %}" role="button">К списку издательств</a>
     </form>
     </div>
   </div>

@@ -17,10 +17,10 @@
             {% endif %}
             <br>
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a class="btn btn-primary" href="{% url 'manuals:bookseries-list' %}" role="button">К списку книжных серий</a>
+            <a class="btn btn-secondary" href="{% url 'manuals:bookseries-list' %}" role="button">К списку книжных серий</a>
             <form action="{% url 'books:book-list' %}" method="get">
               <input type="hidden" name="serie_pk" value="{{ object.pk }}">
-              <button type="submit" class="btn btn-outline-primary">Все книги серии</button>
+              <button type="submit" class="btn btn-outline-secondary">Все книги серии</button>
             </form>
           </div>
         </div>

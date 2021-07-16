@@ -76,11 +76,10 @@ class CartUpdate(View):
                     good.quantity = int(value)
                     good.save()
                     cart.save()
-
         if action == 'save_cart':
             return HttpResponseRedirect(reverse_lazy('carts:cart-edit'))
-
-        elif action == 'create_order':
+        
+        elif action == 'create_order' and cart.total_price != 0:
             return HttpResponseRedirect(reverse_lazy('orders:create-order'))
         else:
             return HttpResponseRedirect(reverse_lazy('carts:cart-edit'))

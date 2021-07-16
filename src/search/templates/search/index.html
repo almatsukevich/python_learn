@@ -21,7 +21,7 @@
           {%for author in object.author.all %}
           {{ author.name }}
       {% endfor %} Рейтинг: {{ object.rating }}  Количество заказов:  {{ object.num_orders }}  Раздел сайта: {{ object.to_class_name }}</p>
-        <a href="{{ object.get_absolute_url }}" class="btn btn-primary">Перейти</a>
+        <a href="{{ object.get_absolute_url }}" class="btn btn-secondary">Перейти</a>
       </div>
     </div>
 <br>

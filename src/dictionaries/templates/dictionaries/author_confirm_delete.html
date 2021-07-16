@@ -15,8 +15,8 @@
     <form action="" method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-primary">Да</button>
-        <a class="btn btn-outline-primary" href="{% url 'manuals:author' object.pk %}" role="button">Посмотреть карточку автора</a>
-        <a class="btn btn-outline-primary" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
+        <a class="btn btn-outline-secondary" href="{% url 'manuals:author' object.pk %}" role="button">Посмотреть карточку автора</a>
+        <a class="btn btn-outline-secondary" href="{% url 'manuals:authors-list' %}" role="button">К списку авторов</a>
     </form>
     </div>
   </div>

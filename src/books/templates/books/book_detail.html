@@ -10,9 +10,7 @@
           </div>
           <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">{{ object.name }}</h1>
-            
             <p class="card-text"><small class="text-muted">ID: {{ object.pk }}</small></p>
-            
             <p class="lead">
               <b>Автор:</b> {% for author in book.author.all %}
               <a href="{% url 'manuals:author' author.pk %}">{{ author.name }}</a>
@@ -51,8 +49,12 @@
             </p>
             <br>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <a class="btn btn-primary" href="{% url 'carts:cart-edit' %}?book_id={{ object.pk }}" role="button">В корзину</a>
-              <a class="btn btn-outline-primary" href="{% url 'books:book-list' %}" role="button">К списку книг</a>
+              {% if object.active %}
+                <a href="{% url 'carts:cart-edit' %}?book_id={{ book.pk }}" class="btn btn-secondary">В корзину</a>
+              {% else %}
+                <a class="btn btn-light">Недоступен</a>
+              {% endif %}
+              <a class="btn btn-outline-secondary" href="{% url 'books:book-list' %}" role="button">К списку книг</a>
 
             </div>
           </div>

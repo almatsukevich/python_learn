@@ -52,6 +52,8 @@ class CreateOrderView(FormView):
             b = Book.objects.get(pk=book_pk)
             b.quantity -= book_quantity
             b.num_orders += book_quantity
+            if b.quantity == 0:
+                b.active = False
             b.save()
                
 
@@ -127,6 +129,8 @@ class OrderUpdateView(PermissionRequiredMixin, UpdateView):
                 book_quantity = good.quantity
                 b = Book.objects.get(pk=book_pk)
                 b.quantity += book_quantity
+                if b.quantity > 0:
+                    b.active = True
                 b.num_orders -= book_quantity
                 b.save()
         return HttpResponseRedirect(reverse_lazy('orders:orders-list'))

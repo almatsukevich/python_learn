@@ -54,12 +54,12 @@
   
               <br>
               {% if perms.orders.change_order %}
-              <a class="btn btn-outline-primary" href="{% url 'orders:order-update' object.pk %}" role="button">Изменить</a>
+              <a class="btn btn-outline-secondary" href="{% url 'orders:order-update' object.pk %}" role="button">Изменить</a>
               {% endif %}
 
             </p>
              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-               <a class="btn btn-outline-primary" href="{% url 'orders:orders-list' %}" role="button">К списку заказов</a>
+               <a class="btn btn-secondary" href="{% url 'orders:orders-list' %}" role="button">К списку заказов</a>
             </div>
           </div>
         </div>

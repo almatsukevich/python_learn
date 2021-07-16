@@ -36,9 +36,9 @@
     <br>
     {% include "paginator.html" %}
     <br>
-    <a class="btn btn-outline-primary" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
+    <a class="btn btn-outline-secondary" href="{% url 'manuals:manuals-home' %}" role="button">К списку справочников</a>
     {% if perms.dictionaries.add_bookgenre %}
-    <a class="btn btn-success" href="{% url 'manuals:bookgenre-create' %}" role="button">Добавить книжный жанр</a>
+    <a class="btn btn-secondary" href="{% url 'manuals:bookgenre-create' %}" role="button">Добавить книжный жанр</a>
     {% endif %}
 
 {% endblock body %}
