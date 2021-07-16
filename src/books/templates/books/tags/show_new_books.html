@@ -14,8 +14,12 @@
             <b>Добавлено: </b> <br>{{ book.created|naturaltime }}<br>
             <h3>{{ book.unit_price }} BYN</h3>
         </p>
-          <a href="{% url 'carts:cart-edit' %}?book_id={{ book.pk }}" class="btn btn-primary">В корзину</a>
-          <a href="{% url 'books:book' book.pk %}" class="btn btn-outline-primary">Подробнее</a>
+          {% if book.active %}
+            <a href="{% url 'carts:cart-edit' %}?book_id={{ book.pk }}" class="btn btn-secondary">В корзину</a>
+          {% else %}
+            <a class="btn btn-light">Недоступен</a>
+          {% endif %}
+          <a href="{% url 'books:book' book.pk %}" class="btn btn-outline-secondary">Подробнее</a>
         </div>
       </div>
     {% endfor %}
